@@ -69,10 +69,14 @@ $('#js-form').submit(function(e) {
 
 	$('#js-form p').remove();
 
+    var formData = new FormData($(this)[0]);
+
 	$.ajax({
 		url: '/declare/',
 		dataType: 'JSON',
-		data: declaration,
+        data: formData,
+        processData: false,
+        contentType: false,
 		type: 'POST',
 	}).done(function (r) {
 		if (r.success) {
