@@ -172,6 +172,20 @@ h2 {
 
 
 
+
+  /*-------------------------------------*\
+  	Comments
+  \*-------------------------------------*/
+	&__comment {
+		padding: 0 .8rem 1rem;
+		line-height: 1.4;
+		color: #555;
+	}
+
+
+
+
+
   /*-------------------------------------*\
   	Buttons
   \*-------------------------------------*/
@@ -211,7 +225,8 @@ h2 {
     line-height: 1.5;
     width: 44rem;
     max-width: 90%;
-    margin: auto;
+    margin: 1em auto;
+		box-sizing: border-box;
   }
 
   .warning {
@@ -221,7 +236,8 @@ h2 {
     line-height: 1.5;
     width: 44rem;
     max-width: 90%;
-    margin: auto;
+    margin: 1em auto;
+		box-sizing: border-box;
   }
 
   .success {
@@ -231,7 +247,8 @@ h2 {
     line-height: 1.5;
     width: 44rem;
     max-width: 90%;
-    margin: auto;
+    margin: 1em auto;
+		box-sizing: border-box;
   }
 
   pre {

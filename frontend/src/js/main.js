@@ -67,7 +67,7 @@ $('#js-form').submit(function(e) {
 		Cookies.set(toStore[i], declaration[toStore[i]]);
 	}
 
-	$('#js-form p').remove();
+	$('.js-rm').remove();
 
     var formData = new FormData($(this)[0]);
 
@@ -80,9 +80,11 @@ $('#js-form').submit(function(e) {
 		type: 'POST',
 	}).done(function (r) {
 		if (r.success) {
-			$('#js-form').append('<p class="success">Nice! Je hebt een mailtje gekregen. Voeg daar ff je bonnetje bij en stuur het door naar de penning. Oké JOE!<br><br>PS: Zorg je ervoor dat het bonnetje goed leesbaar is en de BTW informatie bevat? (PIN bonnetjes mag je lekker zelf houden!)</p>');
-		} else if (r.error === 'emptiness') {
-			$('#js-form').append('<p class="error">Hmmm je moet wel alles invullen!</p>');
+			$('#js-form').append('<p class="success js-rm">Nice! Je hebt een declaratie ingediend. Topper, hé, zeg!</p>');
+        } else if (r.error === 'emptiness') {
+			$('#js-form').append('<p class="error js-rm">Hmmm je moet wel alles invullen!</p>');
+        } else if (r.error === 'file-not-allowed') {
+			$('#js-form').append('<p class="error js-rm">Oooh, probeer je nou een verboden bestand toe te voegen?! :O</p>');
 		} else {
 			console.log(r);
 		}
