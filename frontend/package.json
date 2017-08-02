@@ -1,0 +1,28 @@
+{
+  "name": "declarations",
+  "version": "0.0.1",
+  "description": "Declarations",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:fmjansen/iob_signup.git"
+  },
+  "author": "Floris Jansen",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-plumber": "*",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "gulp-watch": "*",
+    "node-sass": "*",
+    "path": "*",
+    "uglifyjs": "*"
+  }
+}
