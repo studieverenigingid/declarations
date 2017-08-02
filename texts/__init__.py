@@ -1,27 +1,27 @@
-message_html = """<p>Hey {0},</p>
-<p>Wat leuk, je hebt een <b>{1}</b> gekocht!</p>
-Dat kostte: € {2}<br>
-Je kocht het voor: {3}<br>
-En dat valt onder post: {4}<br>
-De aankoop deed je op: {5}<br>
-En je wil je geld terug op: {6}<br>
-Ter name van: {7}</p>
-<p>Voeg bij deze mail je bonnetje en stuur ’m door naar <b>penningmeester-svid@tudelft.nl</b></p>
-<p>Liefs</p>
-<p>PS: Zorg je ervoor dat het bonnetje goed leesbaar is en de BTW informatie bevat? (PIN bonnetjes mag je lekker zelf houden!)</p>"""
+message_html = """<p>Hey Eef,</p>
+<p>Wat leuk, {0} heeft een <b>{1}</b> gekocht!</p>
+<p>Dat kostte: € <b>{2}</b><br>
+De koper heette: <b>{0}</b><br>
+Die wil het geld terug op: <b>{6}</b>, t.n.v. <b>{7}</b><br>
+Nadat ’ie het kocht voor: <b>{3}</b><br>
+En dat valt onder post: <b>{4}</b><br>
+Dus het was een: <b>{1}</b><br>
+De aankoop werd gedaan op: <b>{5}</b></p>
+<p>Voor vragen moet je even emailen naar {8}</p>
+<p>Liefs</p>"""
 
-message = """Hey {0},
+message = """Hey Eef,
 
-Wat leuk, je hebt een {1} gekocht!
+Wat leuk, {0} heeft een {1} gekocht!
+
 Dat kostte: € {2}
-Je kocht het voor: {3}
+De koper heette: {0}
+Die wil het geld terug op: {6}, t.n.v. {7}
+Nadat ’ie het kocht voor: {3}
 En dat valt onder post: {4}
-De aankoop deed je op: {5}
-En je wil je geld terug op: {6}
-Ter name van: {7}
+Dus het was een: {1}
+De aankoop werd gedaan op: {5}
 
-Voeg bij deze mail je bonnetje en stuur ’m door naar penningmeester-svid@tudelft.nl
+Voor vragen moet je even emailen naar {8}
 
-Liefs!
-
-PS: Zorg je ervoor dat het bonnetje goed leesbaar is en de BTW informatie bevat? (PIN bonnetjes mag je lekker zelf houden!)"""
+Liefs!"""
