@@ -60,7 +60,7 @@ def sendMail(to, fro, subject, text, text_html, files=[], server="localhost"):
 
 # Sending email
 def mail(message, message_html, rec_name, rec_email, receipt):
-    receiver = ["Lieve Eva <florismartijnjansen@gmail.com>"]
+    receiver = ["Lieve Eva <penningmeester-svid@tudelft.nl>"]
     sender = "{0} <{1}>".format(rec_name, rec_email)
 
     hash = hashlib.sha1()
