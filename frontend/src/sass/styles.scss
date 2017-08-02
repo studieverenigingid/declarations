@@ -49,7 +49,6 @@ $font--light: 'FuturaBT', sans-serif;
 body {
   background-color: $primaryBackground;
   color: $primaryText;
-  padding-bottom: 4em;
   font-family: $font--light;
   margin: 0;
 }
@@ -259,4 +258,19 @@ h2 {
     display: inline-block;
     margin: 0;
   }
+}
+
+
+
+
+
+/*-------------------------------------*\
+	Comments
+\*-------------------------------------*/
+.version {
+	padding: 2em;
+	text-align: center;
+	color: #999;
+	margin-top: 3em;
+	margin-bottom: 1em;
 }
