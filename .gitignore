@@ -1,0 +1,9 @@
+*.pyc
+venv
+*.db
+envvars/__init__.py
+*.csv
+.DS_Store
+static
+node_modules
+*config.js

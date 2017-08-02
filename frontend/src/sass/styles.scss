@@ -1,0 +1,245 @@
+/*-------------------------------------*\
+
+	Declarations
+
+	- Floris Jansen, id@fmjansen.nl
+
+	styles.scss
+	+ Variables (colors and fonts)
+	+ Bies
+	+ Inputs
+	+ Footer
+	+ Imports
+
+	...
+
+\*-------------------------------------*/
+
+
+
+
+
+/*-------------------------------------*\
+	Variables (colors and fonts)
+\*-------------------------------------*/
+$primaryAccent:   #ef686c;
+$secondaryAccent: #CC333F;
+
+$primaryText:   #000000;
+$secondaryText:   #999999;
+
+$primaryBackground: #FFFFFF;
+$secondaryBackground: #d8376c;
+
+@font-face {
+	font-family: FuturaStd;
+	src: url(../fonts/FuturaStd-Heavy.otf);
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: FuturaBT;
+	src: url(../fonts/FuturaBT-Light.otf);
+	font-weight: 300;
+}
+
+$font--heavy: 'FuturaStd', sans-serif;
+$font--light: 'FuturaBT', sans-serif;
+
+body {
+  background-color: $primaryBackground;
+  color: $primaryText;
+  padding-bottom: 4em;
+  font-family: $font--light;
+  margin: 0;
+}
+
+h1,
+h2 {
+  text-align: center;
+  font-family: $font--heavy;
+  max-width: 90%;
+  margin: 1.5em auto .5em;
+}
+
+
+
+
+
+/*-------------------------------------*\
+	Bies
+\*-------------------------------------*/
+/* Holy bies */
+.bies {
+  height: 51px;
+  width: 100%;
+  border-bottom: 6px solid black;
+  background: transparentize(white, 0.19);
+  margin-bottom: 1em;
+
+  img {
+    width: 274px;
+  }
+}
+
+
+
+
+
+.decl-form {
+  transition: .2s ease opacity;
+
+  /*-------------------------------------*\
+  	Rules (box for label + input)
+  \*-------------------------------------*/
+  &__rule {
+    width: 44rem;
+    max-width: 90%;
+    margin: auto;
+    display: flex;
+  	justify-content: space-between;
+  	flex-wrap: wrap;
+    flex-direction: row;
+    background: lighten($primaryAccent, 30%);
+
+    &:nth-of-type(2n) {
+      background: none;
+    }
+  }
+
+
+
+
+
+  /*-------------------------------------*\
+  	Labels
+  \*-------------------------------------*/
+  &__question {
+    flex-grow: 1;
+    width: 10rem;
+    max-width: 100%;
+    display: block;
+    padding: .8rem;
+    margin: .2rem 0;
+    box-sizing: border-box;
+    line-height: 1.4;
+
+    @media (min-width: 44rem) {
+      text-align: right;
+    }
+
+    &--submit {
+      margin: 1rem 0;
+      padding: 1rem;
+    }
+  }
+
+
+
+
+
+  /*-------------------------------------*\
+  	Inputs
+  \*-------------------------------------*/
+  &__answer {
+    flex-grow: 1;
+    width: 20rem;
+    max-width: 100%;
+    display: block;
+    background: none;
+
+    padding: .8rem;
+    margin: .2rem 0;
+    font-size: 1em;
+    font-family: $font--light;
+    display: block;
+    border: none;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+
+    &:focus {
+      border-bottom: 2px solid $primaryAccent;
+    }
+
+    &--money {
+      &:before {
+        content: "€";
+      }
+    }
+  }
+
+
+
+
+
+  /*-------------------------------------*\
+  	Buttons
+  \*-------------------------------------*/
+  &__submit {
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1em;
+    width: 100%;
+    background: $primaryAccent;
+    border: none;
+    border-radius: 1px;
+    width: 10rem;
+    margin: 1rem 0;
+    display: block;
+    flex: 1;
+    font-family: $font--heavy;
+    cursor: pointer;
+    line-height: 1;
+
+    &:hover {
+      background: darken($primaryAccent, 5%);
+    }
+  }
+
+
+
+
+
+  .pending {
+    opacity: .5;
+  }
+
+  .error {
+    color: $secondaryAccent;
+    background: lighten($secondaryAccent, 47%);
+    padding: 1em;
+    line-height: 1.5;
+    width: 44rem;
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .warning {
+    color: #D4A322;
+    background: lighten(#D4A322, 45%);
+    padding: 1em;
+    line-height: 1.5;
+    width: 44rem;
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .success {
+    color: #02a551;
+    background: lighten(#02a551, 55%);
+    padding: 1em;
+    line-height: 1.5;
+    width: 44rem;
+    max-width: 90%;
+    margin: auto;
+  }
+
+  pre {
+    background: #eee;
+    color: #333;
+    padding: .2em .4em;
+    border-radius: .1em;
+    display: inline-block;
+    margin: 0;
+  }
+}

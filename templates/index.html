@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+
+    <title>Declaratie - Studievereniging i.d</title>
+
+    <meta name="robots" content="no-index,no-follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/static/js/js.cookie.js" async></script>
+    <script src="/static/js/main.js" async></script>
+
+  </head>
+  <body>
+
+    <header class="bies">
+      <img alt="Study association i.d"
+        srcset="/static/img/bies.png 1x,
+        /static/img/bies@2x.png 2x"
+        src="/static/img/bies.png">
+    </header>
+
+    <main>
+      <h1>Declareren</h1>
+
+      <form class="decl-form" id="js-form" action="/declare/" method="post">
+
+        <h2>Hey! Over die aankoop hè...</h2>
+
+        <div class="decl-form__rule">
+          <label for="purchase" class="decl-form__question">Wat heb je gekocht?</label>
+          <input name="purchase" type="text" class="decl-form__answer"
+            placeholder="Bakje schroeven/heel veel frisdrank/tapijt">
+        </div>
+
+        <div class="decl-form__rule">
+          <label for="amount" class="decl-form__question">Hoeveel kostte het in euro’s?</label>
+          <input name="amount" type="number" class="decl-form__answer decl-form__answer--money"
+            placeholder="44,44"
+            min="0" max="1000" step="0.01">
+        </div>
+
+        <div class="decl-form__rule">
+          <label for="committee" class="decl-form__question">Voor welke commissie?</label>
+          <input name="committee" type="text" class="decl-form__answer"
+            placeholder="Spend-i.d"
+            list="committees">
+            <datalist id="committees">
+              <option value="Actid">Actid</option>
+              <option value="Cases on Tour 1">Cases on Tour 1</option>
+              <option value="Cases on Tour 2">Cases on Tour 2</option>
+              <option value="Eerstejaarscommissie">Eerstejaarscommissie</option>
+              <option value="Eerstejaarsweekend">Eerstejaarsweekend</option>
+              <option value="Exid X">Exid X</option>
+              <option value="Exid Y">Exid Y</option>
+              <option value="Flightcase">Flightcase</option>
+              <option value="Foto">Foto</option>
+              <option value="i.d-Algemeen">i.d-Algemeen</option>
+              <option value="i.d-Education">i.d-Education</option>
+              <option value="i.d-Fix">i.d-Fix</option>
+              <option value="i.d-Kafee">i.d-Kafee</option>
+              <option value="IO Festival">IO Festival</option>
+              <option value="IO Bedrijvenbeurs">IO Bedrijvenbeurs</option>
+              <option value="Report-i.d">Report-i.d</option>
+              <option value="Lustrum">Lustrum</option>
+              <option value="Masterdisputen">Masterdisputen</option>
+              <option value="PR-i.d">PR-i.d</option>
+              <option value="ski.d">ski.d</option>
+              <option value="Spring Trip">Spring Trip</option>
+              <option value="Summercue">Summercue</option>
+              <option value="TOC">TOC</option>
+              <option value="TTP">TTP</option>
+              <option value="vidio">vidio</option>
+            </datalist>
+        </div>
+
+        <div class="decl-form__rule">
+          <label for="post" class="decl-form__question">Op welke post gaat dat?</label>
+          <input name="post" type="text" class="decl-form__answer"
+            placeholder="Overige uitgaven"
+            list="posts">
+          <datalist id="posts">
+            <option value="Overige kantoorartikelen">Overige kantoorartikelen</option>
+            <option value="Websitekosten">Websitekosten</option>
+            <option value="Geschenken afstuderend oud-bestuur">Geschenken afstuderend oud-bestuur</option>
+            <option value="Bedankjes">Bedankjes</option>
+            <option value="Verbuik non-food">Verbuik non-food</option>
+            <option value="Verbruik food">Verbruik food</option>
+            <option value="Telefoonkosten">Telefoonkosten</option>
+            <option value="i.day">i.day</option>
+            <option value="Stickers">Stickers</option>
+            <option value="Relatiegeschenken">Relatiegeschenken</option>
+            <option value="Overige promo">Overige promo</option>
+            <option value="Posters">Posters</option>
+            <option value="i.d-Shirts">i.d-Shirts</option>
+            <option value="Overige representatie">Overige representatie</option>
+            <option value="Shirts">Shirts</option>
+            <option value="Tappersshirts">Tappersshirts</option>
+            <option value="Dieselkosten i.d-Bus">Dieselkosten i.d-Bus</option>
+            <option value="Commissie-uitjes">Commissie-uitjes</option>
+            <option value="Inrichting en onderhoud">Inrichting en onderhoud</option>
+            <option value="Projectplannen">Projectplannen</option>
+            <option value="Overige investeringen">Overige investeringen</option>
+            <option value="Reiskosten bestuur">Reiskosten bestuur</option>
+            <option value="Drukwerk Napublicaties">Drukwerk Napublicaties</option>
+            <option value="Drukwerk Programmaboekje">Drukwerk Programmaboekje</option>
+            <option value="Verblijfskosten">Verblijfskosten</option>
+            <option value="Reiskosten ter plaatse">Reiskosten ter plaatse</option>
+            <option value="Kosten vervoer naar bestemming">Kosten vervoer naar bestemming</option>
+            <option value="Beveiliging">Beveiliging</option>
+            <option value="Bands & acts">Bands & acts</option>
+            <option value="Licht en geluid">Licht en geluid</option>
+            <option value="Aankleding">Aankleding</option>
+            <option value="Bekers">Bekers</option>
+            <option value="Programma">Programma</option>
+            <option value="Expositie">Expositie</option>
+            <option value="Commissie workshop">Commissie workshop</option>
+            <option value="Ontbijt">Ontbijt</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Diner">Diner</option>
+            <option value="Drank inkoop">Drank inkoop</option>
+            <option value="Overige catering">Overige catering</option>
+            <option value="Informele activiteit">Informele activiteit</option>
+            <option value="Spellen">Spellen</option>
+            <option value="Formele activiteit">Formele activiteit</option>
+            <option value="Lezing">Lezing</option>
+            <option value="Overige">Overige</option>          </datalist>
+        </div>
+
+        <div class="decl-form__rule">
+          <label for="date" class="decl-form__question">Wanneer heb je het gekocht?</label>
+          <input name="date" type="date" class="decl-form__answer"
+            id="js-date">
+        </div>
+
+
+
+        <h2>Oh en over jou...</h2>
+
+        <div class="decl-form__rule">
+          <label for="name" class="decl-form__question">Hoe heet je?</label>
+          <input name="name" type="text" class="decl-form__answer"
+            placeholder="Sjoerd van Iepen Dalen">
+        </div>
+
+        <div class="decl-form__rule">
+          <label for="email" class="decl-form__question">Wat is je emailadres?</label>
+          <input name="email" type="text" class="decl-form__answer"
+            placeholder="knap_mens@svid.nl">
+        </div>
+
+        <div class="decl-form__rule">
+          <label for="iban" class="decl-form__question">Op welke rekening wil je het geld hebben?</label>
+          <input name="iban" type="text" class="decl-form__answer"
+            placeholder="NL44 ABCD 0123456789">
+        </div>
+
+        <div class="decl-form__rule">
+          <label for="owner" class="decl-form__question">En op welke naam staat die rekening?</label>
+          <input name="owner" type="text" class="decl-form__answer"
+            placeholder="S v Iepen Dalen">
+        </div>
+
+        <div class="decl-form__rule">
+          <label for="" class="decl-form__question decl-form__question--submit">Klaar?</label>
+          <button class="decl-form__submit" type="submit" name="declare_submit">Declareren!</button>
+        </div>
+
+      </form>
+    </main>
+
+  </body>
+</html>
