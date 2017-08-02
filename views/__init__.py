@@ -35,13 +35,15 @@ def sendMail(to, fro, subject, text, text_html, files=[], server="localhost"):
     assert type(to)==list
     assert type(files)==list
 
-    msg = MIMEMultipart('alternative')
+    msg = MIMEMultipart()
     msg['From'] = fro
     msg['To'] = COMMASPACE.join(to)
     msg['Subject'] = subject
 
-    msg.attach( MIMEText(text, 'plain') )
-    msg.attach( MIMEText(text_html, 'html') )
+    msg_text = MIMEMultipart('alternative')
+    msg.attach(msg_text)
+    msg_text.attach( MIMEText(text, 'plain') )
+    msg_text.attach( MIMEText(text_html, 'html') )
 
     for file in files:
         if file.mimetype == 'application/pdf':
@@ -60,8 +62,8 @@ def sendMail(to, fro, subject, text, text_html, files=[], server="localhost"):
 
 # Sending email
 def mail(message, message_html, rec_name, rec_email, receipt):
-    receiver = ["Lieve Eva <penningmeester-svid@tudelft.nl>"]
-    sender = "{0} <{1}>".format(rec_name, rec_email)
+    receiver = ["Eva <penningmeester-svid@tudelft.nl>"]
+    sender = "De Server <noreply@svid.nl>"
 
     hash = hashlib.sha1()
     hash.update(str(time.time()).encode('utf-8'))
