@@ -6,66 +6,73 @@ from flask import Flask, render_template, request, send_from_directory, make_res
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 
+import hashlib
+import time
+from io import StringIO
+
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.application import MIMEApplication
+from email import encoders
+
 # Get app
 from .. import app
 # Get texts for in email
 from .. import texts
 
-from enum import Enum
-class ApiClient:
-	apiUri = 'https://api.elasticemail.com/v2'
-	apiKey = '2b6b6e02-146e-4dd8-aa13-350e65292717'
+COMMASPACE = ', '
+ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-	@staticmethod
-	def Request(method, url, data):
-		data['apikey'] = ApiClient.apiKey
-		if method == 'POST':
-			result = requests.post(ApiClient.apiUri + url, params = data)
-		elif method == 'PUT':
-			result = requests.put(ApiClient.apiUri + url, params = data)
-		elif method == 'GET':
-			attach = ''
-			for key in data:
-				attach = attach + key + '=' + data[key] + '&'
-			url = url + '?' + attach[:-1]
-			result = requests.get(ApiClient.apiUri + url)
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-		jsonMy = result.json()
 
-		if jsonMy['success'] is False:
-			return jsonMy['error']
+def sendMail(to, fro, subject, text, text_html, files=[], server="localhost"):
+    assert type(to)==list
+    assert type(files)==list
 
-		return jsonMy['data']
+    msg = MIMEMultipart('alternative')
+    msg['From'] = fro
+    msg['To'] = COMMASPACE.join(to)
+    msg['Subject'] = subject
 
-def Send(subject, EEfrom, fromName, to, bodyHtml, bodyText, isTransactional):
-	return ApiClient.Request('POST', '/email/send', {
-		'subject': subject,
-		'from': EEfrom,
-		'fromName': fromName,
-		'to': to,
-		'bodyHtml': bodyHtml,
-		'bodyText': bodyText,
-		'isTransactional': isTransactional})
+    msg.attach( MIMEText(text, 'plain') )
+    msg.attach( MIMEText(text_html, 'html') )
 
+    for file in files:
+        if file.mimetype == 'application/pdf':
+            part = MIMEApplication(file.read())
+            part.add_header('Content-Disposition', 'attachment', filename=file.filename)
+        else:
+            part = MIMEImage(file.read(), name=file.filename)
+        msg.attach(part)
+
+    smtp = smtplib.SMTP(server)
+    send_result = smtp.sendmail( fro, to, msg.as_string() )
+    smtp.close()
+    return send_result
 
 
 
 # Sending email
-def mail(message, message_html, rec_name, rec_email):
-    sender = 'Penningmeester <penningmeester-svid@fmjansen.nl>'
-    receiver = "{0} <{1}>".format(rec_name, rec_email)
-    return Send("Declaratie (nog ff doorsturen)",
-        "penningmeester-svid@fmjansen.nl",
-        "Penningmeester - Studievereniging i.d",
-        receiver,
-        message_html,
-        message,
-        True)
+def mail(message, message_html, rec_name, rec_email, receipt):
+    receiver = ["Lieve Eva <florismartijnjansen@gmail.com>"]
+    sender = "{0} <{1}>".format(rec_name, rec_email)
+
+    hash = hashlib.sha1()
+    hash.update(str(time.time()).encode('utf-8'))
+    subject = "Declaratie [{0}]".format(hash.hexdigest()[:8])
+
+    return sendMail(receiver, sender, subject, message, message_html, [receipt])
 
 
 
 # Enrolling function
-def declare(form):
+def declare(form, files):
 
     try:
         purchase = form['purchase']
@@ -77,6 +84,7 @@ def declare(form):
         email = form['email']
         iban = form['iban']
         owner = form['owner']
+        receipt = files['receipt']
     except KeyError as e:
         app.logger.warn(e)
     except TypeError as e:
@@ -91,19 +99,28 @@ def declare(form):
         or not name \
         or not email \
         or not iban \
-        or not owner:
+        or not owner \
+        or not receipt \
+        or receipt.filename == '':
         return (json.dumps({ 'success': False, 'error': 'emptiness' }))
 
+    if not allowed_file(receipt.filename):
+        return (json.dumps({ 'success': False, 'error': 'file-not-allowed' }))
+
     message = texts.message.format(name, purchase, amount, committee, post,
-        date, iban, owner)
+        date, iban, owner, email)
     message_html = texts.message_html.format(name, purchase, amount, committee, post,
-        date, iban, owner)
+        date, iban, owner, email)
 
     # Try to send the confirmation mail
-    mail_result = mail(message, message_html, name, email)
-    if not mail_result:
-        app.logger.error(mail_result.text)
-        return (json.dumps({ 'success': False, 'error': 'mailing-error' }), 500)
+    mail_result = mail(message, message_html, name, email, receipt)
+    if len(mail_result) is not 0:
+        app.logger.error(mail_result)
+        return (json.dumps({
+            'success': False,
+            'error': 'mailing-error',
+            'smtp-error': mail_result
+        }), 500)
 
     return json.dumps({ 'success': True })
 
@@ -115,7 +132,7 @@ def index():
 
 @app.route("/declare/", methods=['POST'])
 def declare_call():
-    return declare(request.form)
+    return declare(request.form, request.files)
 
 
 
