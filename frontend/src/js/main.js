@@ -88,5 +88,11 @@ $('#js-form').submit(function(e) {
 		} else {
 			console.log(r);
 		}
-	});
+	}).fail(function (r, e, d) {
+        if (d === 'REQUEST ENTITY TOO LARGE') {
+            $('#js-form').append('<p class="error js-rm">Je bestand is te groot! Je mag alleen bonnetjes kleiner dan 2MB uploaden. Anders moet je even mailen.</p>');
+        } else {
+            $('#js-form').append('<p class="error js-rm">Er gaat iets fout! :( Mail de penning ff want dat kan natuurlijk niet.</p>');
+        }
+    });
 })
