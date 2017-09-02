@@ -7,4 +7,4 @@ envvars/__init__.py
 static
 node_modules
 *config.js
-.otf
+*.otf
