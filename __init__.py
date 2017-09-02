@@ -4,6 +4,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.cors import CORS
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024
 CORS(app)
 
 @app.before_first_request
