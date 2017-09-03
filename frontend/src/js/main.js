@@ -89,10 +89,10 @@ $('#js-form').submit(function(e) {
 			console.log(r);
 		}
 	}).fail(function (r, e, d) {
-        if (d === 'REQUEST ENTITY TOO LARGE') {
-            $('#js-form').append('<p class="error js-rm">Je bestand is te groot! Je mag alleen bonnetjes kleiner dan 2MB uploaden. Anders moet je even mailen.</p>');
+        if (d === 'REQUEST ENTITY TOO LARGE' || d === 'Request Entity Too Large') {
+            $('#js-form').append('<p class="error js-rm">Je bestand is te groot! Je mag alleen bonnetjes kleiner dan 2MB uploaden. Anders moet je even mailen naar penningmeester-svid@tudelft.nl.</p>');
         } else {
-            $('#js-form').append('<p class="error js-rm">Er gaat iets fout! :( Mail de penning ff want dat kan natuurlijk niet.</p>');
+            $('#js-form').append('<p class="error js-rm">Er gaat iets fout! :( Mail de penning ff op penningmeester-svid@tudelft.nl want dat kan natuurlijk niet.</p>');
         }
     });
 })
