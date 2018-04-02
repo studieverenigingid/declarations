@@ -17,7 +17,7 @@ script: gulp build
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -r -e 'ssh -p 4444' --delete-after --quiet $TRAVIS_BUILD_DIR/ floris@185.85.18.215:/var/www/declarations.svid.nl/app/declarations
+  script: rsync -r -e 'ssh -p 4444' --delete-after --quiet --exclude 'frontend' --exclude 'node_modules' --exclude 'deploy_rsa.enc' --exclude 'README.md' $TRAVIS_BUILD_DIR/ floris@185.85.18.215:/var/www/declarations.svid.nl/app/declarations
   on:
     branch: master
 
