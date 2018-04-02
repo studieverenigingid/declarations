@@ -22,7 +22,7 @@ deploy:
     branch: master
 
 addons:
-  ssh_known_hosts: 185.85.18.215
+  ssh_known_hosts: 185.85.18.215:4444
 
 before_deploy:
 - cd ../
