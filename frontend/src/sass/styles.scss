@@ -1,17 +1,17 @@
 /*-------------------------------------*\
 
-	Declarations
+  Declarations
 
-	- Floris Jansen, id@fmjansen.nl
+  - Floris Jansen, id@fmjansen.nl
 
-	styles.scss
-	+ Variables (colors and fonts)
-	+ Bies
-	+ Inputs
-	+ Footer
-	+ Imports
+  styles.scss
+  + Variables (colors and fonts)
+  + Bies
+  + Inputs
+  + Footer
+  + Imports
 
-	...
+  ...
 
 \*-------------------------------------*/
 
@@ -20,43 +20,32 @@
 
 
 /*-------------------------------------*\
-	Variables (colors and fonts)
+  Variables (colors and fonts)
 \*-------------------------------------*/
-$primaryAccent:   #ef686c;
-$secondaryAccent: #CC333F;
+$primary-accent: #ef686c;
+$secondary-accent: #cc333f;
 
-$primaryText:   #000000;
-$secondaryText:   #999999;
+$primary-text: #000;
+$secondary-text: #999;
 
-$primaryBackground: #FFFFFF;
-$secondaryBackground: #d8376c;
+$primary-background: #fff;
+$secondary-background: #d8376c;
 
-@font-face {
-	font-family: FuturaStd;
-	src: url(../fonts/FuturaStd-Heavy.otf);
-	font-weight: 700;
-}
-
-@font-face {
-	font-family: FuturaBT;
-	src: url(../fonts/FuturaBT-Light.otf);
-	font-weight: 300;
-}
-
-$font--heavy: 'FuturaStd', sans-serif;
-$font--light: 'FuturaBT', sans-serif;
+$font: 'Muli', Arial, sans-serif;
+$font: 'Muli', Arial, sans-serif;
 
 body {
-  background-color: $primaryBackground;
-  color: $primaryText;
-  font-family: $font--light;
+  background-color: $primary-background;
+  color: $primary-text;
+  font-family: $font;
   margin: 0;
 }
 
 h1,
 h2 {
   text-align: center;
-  font-family: $font--heavy;
+  font-family: $font;
+  font-weight: 800;
   max-width: 90%;
   margin: 1.5em auto .5em;
 }
@@ -66,20 +55,31 @@ h2 {
 
 
 /*-------------------------------------*\
-	Bies
+  Bies
 \*-------------------------------------*/
-/* Holy bies */
+// Holy bies
 .bies {
-  height: 51px;
   width: 100%;
-  border-bottom: 6px solid black;
-  background: transparentize(white, 0.19);
-  margin-bottom: 1em;
+  position: relative;
+  padding-bottom: 1em;
 
-  img {
-    width: 274px;
+  &__image {
+    height: 80px;
+    position: relative;
+    z-index: 11;
+    display: block;
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+      margin: 0 0 0 2em;
+    }
+
+    @media (min-width: 1200px) {
+      height: 7.5vw;
+    }
   }
 }
+// Amen
 
 
 
@@ -89,17 +89,17 @@ h2 {
   transition: .2s ease opacity;
 
   /*-------------------------------------*\
-  	Rules (box for label + input)
+    Rules (box for label + input)
   \*-------------------------------------*/
   &__rule {
     width: 44rem;
     max-width: 90%;
     margin: auto;
     display: flex;
-  	justify-content: space-between;
-  	flex-wrap: wrap;
+    justify-content: space-between;
+    flex-wrap: wrap;
     flex-direction: row;
-    background: lighten($primaryAccent, 30%);
+    background: lighten($primary-accent, 30%);
 
     &:nth-of-type(2n) {
       background: none;
@@ -111,7 +111,7 @@ h2 {
 
 
   /*-------------------------------------*\
-  	Labels
+    Labels
   \*-------------------------------------*/
   &__question {
     flex-grow: 1;
@@ -138,7 +138,7 @@ h2 {
 
 
   /*-------------------------------------*\
-  	Inputs
+    Inputs
   \*-------------------------------------*/
   &__answer {
     flex-grow: 1;
@@ -150,20 +150,17 @@ h2 {
     padding: .8rem;
     margin: .2rem 0;
     font-size: 1em;
-    font-family: $font--light;
-    display: block;
-    border: none;
+    font-family: $font;
+    border: 0;
     border-bottom: 2px solid transparent;
     box-sizing: border-box;
 
     &:focus {
-      border-bottom: 2px solid $primaryAccent;
+      border-bottom: 2px solid $primary-accent;
     }
 
-    &--money {
-      &:before {
-        content: "€";
-      }
+    &--money::before {
+      content: '€';
     }
   }
 
@@ -173,39 +170,39 @@ h2 {
 
 
   /*-------------------------------------*\
-  	Comments
+    Comments
   \*-------------------------------------*/
-	&__comment {
-		padding: 0 .8rem 1rem;
-		line-height: 1.4;
-		color: #555;
-	}
+  &__comment {
+    padding: 0 .8rem 1rem;
+    line-height: 1.4;
+    color: #555;
+  }
 
 
 
 
 
   /*-------------------------------------*\
-  	Buttons
+    Buttons
   \*-------------------------------------*/
   &__submit {
-    color: white;
+    color: $primary-background;
     padding: 1rem 2rem;
     font-size: 1em;
-    width: 100%;
-    background: $primaryAccent;
-    border: none;
+    background: $primary-accent;
+    border: 0;
     border-radius: 1px;
     width: 10rem;
     margin: 1rem 0;
     display: block;
     flex: 1;
-    font-family: $font--heavy;
+    font-family: $font;
+    font-weight: 800;
     cursor: pointer;
     line-height: 1;
 
     &:hover {
-      background: darken($primaryAccent, 5%);
+      background: darken($primary-accent, 5%);
     }
   }
 
@@ -218,25 +215,25 @@ h2 {
   }
 
   .error {
-    color: $secondaryAccent;
-    background: lighten($secondaryAccent, 47%);
+    color: $secondary-accent;
+    background: lighten($secondary-accent, 47%);
     padding: 1em;
     line-height: 1.5;
     width: 44rem;
     max-width: 90%;
     margin: 1em auto;
-		box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .warning {
-    color: #D4A322;
-    background: lighten(#D4A322, 45%);
+    color: #d4a322;
+    background: lighten(#d4a322, 45%);
     padding: 1em;
     line-height: 1.5;
     width: 44rem;
     max-width: 90%;
     margin: 1em auto;
-		box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .success {
@@ -247,7 +244,7 @@ h2 {
     width: 44rem;
     max-width: 90%;
     margin: 1em auto;
-		box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   pre {
@@ -265,12 +262,12 @@ h2 {
 
 
 /*-------------------------------------*\
-	Comments
+  Comments
 \*-------------------------------------*/
 .version {
-	padding: 2em;
-	text-align: center;
-	color: #999;
-	margin-top: 3em;
-	margin-bottom: 1em;
+  padding: 2em;
+  text-align: center;
+  color: #999;
+  margin-top: 3em;
+  margin-bottom: 1em;
 }

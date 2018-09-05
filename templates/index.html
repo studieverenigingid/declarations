@@ -4,13 +4,17 @@
 
     <meta charset="utf-8">
 
-    <title>Declaratie - Studievereniging i.d</title>
+    <title>Declaratie - ID</title>
 
     <meta name="robots" content="no-index,no-follow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Muli:300,800">
     <link rel="stylesheet" href="/static/css/styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+      </script>
     <script src="/static/js/js.cookie.js" async></script>
     <script src="/static/js/main.js" async></script>
 
@@ -18,10 +22,16 @@
   <body>
 
     <header class="bies">
-      <img alt="Study association i.d"
-        srcset="/static/img/bies.png 1x,
-        /static/img/bies@2x.png 2x"
-        src="/static/img/bies.png">
+
+      <a href="//svid.nl">
+        <picture>
+          <source srcset="/static/img/logo-mark.svg" type="image/svg+xml">
+          <img class="bies__image" alt="ID"
+            srcset="/static/img/logo-mark.png 1x,
+              /static/img/logo-mark@2x.png 2x"
+            src="/static/img/logo-mark.png">
+        </picture>
+      </a>
     </header>
 
     <main>
@@ -47,7 +57,7 @@
         <div class="decl-form__rule">
           <label for="committee" class="decl-form__question">Voor welke commissie?</label>
           <input name="committee" type="text" class="decl-form__answer"
-            placeholder="Spend-i.d"
+            placeholder="Spend ID"
             list="committees">
             <datalist id="committees">
               <option value="Actid">Actid</option>
@@ -128,7 +138,8 @@
             <option value="Spellen">Spellen</option>
             <option value="Formele activiteit">Formele activiteit</option>
             <option value="Lezing">Lezing</option>
-            <option value="Overige">Overige</option>          </datalist>
+            <option value="Overige">Overige</option>
+          </datalist>
         </div>
 
         <div class="decl-form__rule">
@@ -181,7 +192,7 @@
     </main>
 
     <footer class="version">
-      Declarations v0.3.1
+      Declarations v0.3.2
     </footer>
 
   </body>
