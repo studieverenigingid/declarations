@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-message_html = """<p>Lieve Tho,</p>
+message_html = """<p>Lieve Lotte,</p>
 <p>Wat leuk, {0} heeft een <b>{1}</b> gekocht!</p>
 <p>Dat kostte: € <b>{2}</b><br>
 De koper heette: <b>{0}</b><br>
@@ -13,7 +13,7 @@ De aankoop werd gedaan op: <b>{5}</b></p>
 <p>Voor vragen moet je even emailen naar {8}</p>
 <p>Liefs</p>"""
 
-message = """Lieve Tho,
+message = """Lieve Lotte,
 
 Wat leuk, {0} heeft een {1} gekocht!
 
