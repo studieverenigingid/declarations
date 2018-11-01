@@ -5,7 +5,7 @@ committee_emails = {
     'ActID': "actid-svid@tudelft.nl",
     'Cases on Tour 1': "casesontour-svid@tudelft.nl",
     'Cases on Tour 2': "casesontour-svid@tudelft.nl",
-    'Eerstejaarscommissie': "eerstejaarscommissie-svid@tudelft.nl",
+    'Eerstejaarscommissie': "eerstejaars-svid@tudelft.nl",
     'Eerstejaarsweekend': "eerstejaarsweekend-svid@tudelft.nl",
     'ExID': "exid-svid@tudelft.nl",
     'Flight Case': "flightcase-svid@tudelft.nl",
