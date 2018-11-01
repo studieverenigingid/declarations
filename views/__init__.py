@@ -64,7 +64,7 @@ def sendMail(to, fro, subject, text, text_html, files=[], server="localhost"):
 
 # Sending email
 def mail(message, message_html, rec_name, rec_email, receipt, committee):
-    receiver = ["Penningmeester <florismartijnjansen@gmail.com>", email_addresses.committee_emails[committee]]
+    receiver = ["Penningmeester <penningmeester-svid@tudelft.nl>", email_addresses.committee_emails[committee]]
     sender = "De Server <noreply@svid.nl>"
 
     hash = hashlib.sha1()
