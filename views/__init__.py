@@ -22,6 +22,8 @@ from email import encoders
 from .. import app
 # Get texts for in email
 from .. import texts
+# Get email addresses
+from .. import email_addresses
 
 COMMASPACE = ', '
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -61,8 +63,8 @@ def sendMail(to, fro, subject, text, text_html, files=[], server="localhost"):
 
 
 # Sending email
-def mail(message, message_html, rec_name, rec_email, receipt):
-    receiver = ["Eva <penningmeester-svid@tudelft.nl>"]
+def mail(message, message_html, rec_name, rec_email, receipt, committee):
+    receiver = ["Penningmeester <florismartijnjansen@gmail.com>", email_addresses.committee_emails[committee]]
     sender = "De Server <noreply@svid.nl>"
 
     hash = hashlib.sha1()
@@ -115,7 +117,7 @@ def declare(form, files):
         date, iban, owner, email)
 
     # Try to send the confirmation mail
-    mail_result = mail(message, message_html, name, email, receipt)
+    mail_result = mail(message, message_html, name, email, receipt, committee)
     if len(mail_result) is not 0:
         app.logger.error(mail_result)
         return (json.dumps({
