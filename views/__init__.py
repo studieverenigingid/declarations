@@ -3,7 +3,7 @@ import datetime
 import requests
 import json
 from flask import Flask, render_template, request, send_from_directory, make_response
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 
 import hashlib
