@@ -17,12 +17,12 @@ script: gulp build
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -r -e 'ssh -p 4444' --quiet --exclude 'frontend' --exclude 'node_modules' --exclude 'deploy_rsa.enc' --exclude 'README.md' $TRAVIS_BUILD_DIR/ floris@185.85.18.215:/var/www/declarations.svid.nl/app/declarations
+  script: rsync -r -e 'ssh -p 4444' --quiet --exclude 'frontend' --exclude 'node_modules' --exclude 'deploy_rsa.enc' --exclude 'README.md' $TRAVIS_BUILD_DIR/ floris@185.57.8.139:/var/www/declarations.svid.nl/app/declarations
   on:
     branch: master
 
 addons:
-  ssh_known_hosts: 185.85.18.215:4444
+  ssh_known_hosts: 185.57.8.139:4444
 
 before_deploy:
 - cd ../
