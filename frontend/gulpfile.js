@@ -86,8 +86,8 @@ gulp.task('watch-copy-fonts', function() {
     });
 });
 
-gulp.task('copy', ['copy-images', 'copy-images']);
-gulp.task('watch-copy', ['watch-copy-images', 'copy-fonts']);
+gulp.task('copy', gulp.parallel('copy-images', 'copy-fonts'));
+gulp.task('watch-copy', gulp.parallel('watch-copy-images', 'copy-fonts'));
 
 
 
@@ -96,9 +96,11 @@ gulp.task('watch-copy', ['watch-copy-images', 'copy-fonts']);
 /***************
  * COLLECTIONS *
  ***************/
-gulp.task('build', ['sass', 'scripts', 'copy']);
-gulp.task('watch', ['build'], function() {
-    gulp.start(['watch-sass', 'watch-copy', 'watch-scripts']);
-});
+gulp.task('build', gulp.parallel('sass', 'scripts', 'copy'));
+gulp.task('watch',
+	gulp.series('build',
+		gulp.parallel('watch-sass', 'watch-copy', 'watch-scripts')
+	)
+);
 
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.series('watch'));
