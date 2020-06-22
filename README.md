@@ -1,4 +1,4 @@
-Declarations system Study association i.d
+Declarations system ID study association
 ==================
 
 ## Backend
