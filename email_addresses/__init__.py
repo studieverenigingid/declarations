@@ -15,7 +15,7 @@ committee_emails = {
     'ID Kafee': "kafee-svid@tudelft.nl",
     'IDE Business Fair': "iob-svid@tudelft.nl",
     'IO Festival': "iofestival-svid@tudelft.nl",
-    'Master Summer Day': "msd-svid@tudelft.nl",
+    'Master Meetup Day': "msd-svid@tudelft.nl",
     'Master Communities': "svid@tudelft.nl",
     'PRID': "prid-svid@tudelft.nl",
     'ReportID': "reportid-svid@tudelft.nl",
